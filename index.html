@@ -14,7 +14,7 @@
             padding: 0;
             background-color: #f4f4f4;
             color: #333;
-            scroll-behavior: smooth; /* Smooth scroll */
+            scroll-behavior: smooth;
         }
         h1, h2 {
             color: #0056b3;
@@ -22,7 +22,7 @@
 
         /* Header */
         header {
-            background-color: #4a6fa5; /* More subtle blue */
+            background-color: #4a6fa5;
             color: #fff;
             padding: 15px 0;
             text-align: center;
@@ -32,7 +32,7 @@
             left: 0;
             z-index: 1000;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s ease-in-out; /* Smooth header color change */
+            transition: background-color 0.3s ease-in-out;
         }
         header h1 {
             color: rgb(255, 255, 255);
@@ -43,7 +43,7 @@
         /* Main Content */
         main {
             max-width: 1000px;
-            margin: 100px auto 20px; /* Add margin-top to prevent overlap with the fixed header */
+            margin: 100px auto 20px;
             padding: 20px;
             background-color: #fff;
             border-radius: 10px;
@@ -68,6 +68,8 @@
             font-family: Consolas, "Courier New", monospace;
             font-size: 1.1rem;
             margin: 10px 0;
+            white-space: pre-wrap; /* Allow text to wrap */
+            overflow-x: auto; /* Add horizontal scroll if needed */
         }
         code {
             display: block;
@@ -82,27 +84,15 @@
             padding-left: 20px;
         }
 
-        /* Screenshots */
-        .screenshot {
-            width: 100%;              /* Makes sure the image uses the full width available */
-            max-width: 1200px;         /* Limits the maximum width of the image */
-            height: 600px;            /* Set a standard height for all images */
-            margin: 10px auto;        /* Centers the image horizontally and adds vertical margin */
-            display: block;           /* Ensures the image behaves as a block element */
-            border: 2px solid #ddd;   /* Optional border for a clean look */
-            border-radius: 5px;       /* Rounded corners for a neat appearance */
+        /* Images */
+        .screenshot, .code_snippet {
+            max-width: 100%;
+            height: auto;
+            margin: 10px 0;
+            border: 2px solid #ddd;
+            border-radius: 5px;
         }
-        .code_snippet {
-            width: 100%;              /* Makes sure the image uses the full width available */
-            max-width: 600px;         /* Limits the maximum width of the image */
-            height: 300px;            /* Set a standard height for all images */
-            margin: 10px 0;        /* Centers the image horizontally and adds vertical margin */
-            display: block;           /* Ensures the image behaves as a block element */
-            border: 2px solid #ddd;   /* Optional border for a clean look */
-            border-radius: 5px;       /* Rounded corners for a neat appearance */
-        }
-        
-        /* Footer */
+
         /* Footer */
         footer {
             background-color: #333;
@@ -121,10 +111,9 @@
             text-decoration: underline;
         }
 
-
         /* Buttons */
         .button {
-            background-color: #4a6fa5; /* Matches header color */
+            background-color: #4a6fa5;
             color: white;
             padding: 10px 20px;
             text-decoration: none;
@@ -192,16 +181,26 @@
         /* Mobile Responsiveness */
         @media screen and (max-width: 768px) {
             header h1 {
-                font-size: 2rem;
+                font-size: 1.5rem;
             }
             main {
                 padding: 15px;
+                margin-top: 80px;
+            }
+            h2 {
+                font-size: 1.5rem;
             }
             .section {
                 margin-bottom: 20px;
             }
             footer {
                 font-size: 0.9rem;
+            }
+            .screenshot, .code_snippet {
+                height: auto;
+            }
+            .collapsible {
+                font-size: 1rem;
             }
         }
     </style>
@@ -349,11 +348,10 @@ console.log(sineValues.toString());
                 <li><a href="https://stackoverflow.com/questions/59300786/is-numjs-the-equivalent-of-numpy-in-javascript-what-are-its-dependencies-to-wor" target="_blank">Stack Overflow for NumJS library</a></li>
             </ul>
         </section>
-            
     </main>
 
     <footer>
-        <p>Made by J024 : Manognya, Divisht, Helly Bera .</p>
+        <p>Made by J024 : Manognya, Divisht, Helly Bera</p>
     </footer>
 
     <button class="scroll-to-top" id="scrollToTopBtn">&#8679;</button>
