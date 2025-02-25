@@ -1,3 +1,389 @@
-<html>
-  blog.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>NumJS: A Powerful JavaScript Library for Numerical Computing</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            scroll-behavior: smooth; /* Smooth scroll */
+        }
+        h1, h2 {
+            color: #0056b3;
+        }
+
+        /* Header */
+        header {
+            background-color: #4a6fa5; /* More subtle blue */
+            color: #fff;
+            padding: 15px 0;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease-in-out; /* Smooth header color change */
+        }
+        header h1 {
+            color: rgb(255, 255, 255);
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1000px;
+            margin: 100px auto 20px; /* Add margin-top to prevent overlap with the fixed header */
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 30px;
+            animation: fadeIn 1s ease-out;
+        }
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        /* Code styling */
+        pre, code {
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 10px;
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 1.1rem;
+            margin: 10px 0;
+        }
+        code {
+            display: block;
+        }
+
+        /* Lists */
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        ol {
+            padding-left: 20px;
+        }
+
+        /* Screenshots */
+        .screenshot {
+            width: 100%;              /* Makes sure the image uses the full width available */
+            max-width: 1200px;         /* Limits the maximum width of the image */
+            height: 600px;            /* Set a standard height for all images */
+            margin: 10px auto;        /* Centers the image horizontally and adds vertical margin */
+            display: block;           /* Ensures the image behaves as a block element */
+            border: 2px solid #ddd;   /* Optional border for a clean look */
+            border-radius: 5px;       /* Rounded corners for a neat appearance */
+        }
+        .code_snippet {
+            width: 100%;              /* Makes sure the image uses the full width available */
+            max-width: 600px;         /* Limits the maximum width of the image */
+            height: 300px;            /* Set a standard height for all images */
+            margin: 10px 0;        /* Centers the image horizontally and adds vertical margin */
+            display: block;           /* Ensures the image behaves as a block element */
+            border: 2px solid #ddd;   /* Optional border for a clean look */
+            border-radius: 5px;       /* Rounded corners for a neat appearance */
+        }
+        
+        /* Footer */
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            margin-top: 30px;
+        }
+        footer a {
+            color: #ffcc00;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        footer a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+
+        /* Buttons */
+        .button {
+            background-color: #4a6fa5; /* Matches header color */
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .button:hover {
+            background-color: #3b5d87;
+        }
+
+        /* Scroll to Top Button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4a6fa5;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .scroll-to-top:hover {
+            background-color: #3b5d87;
+        }
+
+        /* Collapsible content */
+        .collapsible {
+            background-color: #4a6fa5;
+            color: white;
+            cursor: pointer;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 1.1rem;
+        }
+
+        .active, .collapsible:hover {
+            background-color: #3b5d87;
+        }
+
+        .content {
+            padding: 0 18px;
+            display: none;
+            overflow: hidden;
+            background-color: #f9f9f9;
+            border-left: 3px solid #4a6fa5;
+            margin-bottom: 10px;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Mobile Responsiveness */
+        @media screen and (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            main {
+                padding: 15px;
+            }
+            .section {
+                margin-bottom: 20px;
+            }
+            footer {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>NumJS: A Powerful JavaScript Library for Numerical Computing</h1>
+    </header>
+
+    <main>
+        <section class="section">
+            <h2>Introduction</h2>
+            <p>NumJS is a powerful JavaScript library for numerical computing, bringing the capabilities of array and matrix operations, linear algebra, and statistical functions to JavaScript. Whether you're building web applications or server-side solutions, NumJS simplifies complex calculations with an intuitive API. Perform tasks like matrix multiplication, statistical analysis, and element-wise operations—all within JavaScript. Optimized for both browser and Node.js environments, NumJS offers a seamless and efficient solution for numerical computing without the need for external libraries or languages.</p>
+        </section>
+
+        <section class="section">
+            <h2>Installation and Setup</h2>
+            <p>To get started with NumJS, follow the steps below to install and configure it in your project:</p>
+            <ol>
+                <li>Open your terminal or command prompt.</li>
+                <li>If you're using npm, run the following command to install NumJS:
+                    <code>npm install numjs</code>
+                </li>
+                <li>If you're using a browser, you can include the library directly in your HTML:
+                    <pre><code>&lt;script src="https://cdn.jsdelivr.net/npm/numjs@0.0.1/dist/numjs.min.js"&gt;&lt;/script&gt;</code></pre>
+                </li>
+                <li>Once installed, you can import the library in your JavaScript file:
+                    <pre><code>import nj from 'numjs';</code></pre>
+                </li>
+            </ol>
+        </section>
+
+        <section class="section">
+            <h2>Key Features</h2>
+            <ul>
+                <li><strong>Array Operations:</strong> Perform vector and matrix operations with ease.</li> 
+                <img src="kf_1.png" alt="Key Feature 1" class="code_snippet">
+                <li><strong>Linear Algebra:</strong> Includes functions for matrix multiplication, inverses, eigenvalues, and more.</li>
+                <img src="kf_2.png" alt="Key Feature 2" class="code_snippet">
+                <li><strong>Statistical Functions:</strong> Compute mean, variance, standard deviation, etc.</li>
+                <img src="kf_3.png" alt="Key Feature 3" class="code_snippet">
+                <li><strong>Element-wise Operations:</strong> Perform mathematical operations on individual elements of arrays.</li>
+                <img src="kf_4.png" alt="Key Feature 4" class="code_snippet">
+                <li><strong>Integration with JavaScript:</strong> Easily integrates with other JavaScript tools and libraries.</li>
+                <img src="kf_5.png" alt="Key Feature 5" class="code_snippet">
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Code Examples</h2>
+            <p>Here are some examples to demonstrate how to use NumJS in your project:</p>
+
+            <button class="collapsible">Example 1: Creating and Manipulating Arrays</button>
+            <div class="content">
+                <pre><code>let arr = nj.array([1, 2, 3, 4, 5]);
+arr = arr.add(2); // Adds 2 to each element
+console.log(arr); // Output: [3, 4, 5, 6, 7]
+</code></pre>
+            </div>
+
+            <button class="collapsible">Example 2: Matrix Operations</button>
+            <div class="content">
+                <pre><code>let mat1 = nj.array([[1, 2], [3, 4]]);
+let mat2 = nj.array([[5, 6], [7, 8]]);
+let result = mat1.dot(mat2); // Matrix multiplication
+console.log(result); // Output: [[19, 22], [43, 50]]
+</code></pre>
+            </div>
+
+            <button class="collapsible">Example 3: Statistical Functions</button>
+            <div class="content">
+                <pre><code>let data = nj.array([5, 10, 15, 20, 25]);
+let mean = data.mean();
+let variance = data.var();
+console.log(`Mean: ${mean}, Variance: ${variance}`);
+</code></pre>
+            </div>
+
+            <button class="collapsible">Example 4: Array Reshaping </button>
+            <div class="content">
+                <pre><code>let originalArray = nj.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
+let reshapedArray = originalArray.reshape(3, 4); // Reshape to 3 rows and 4 columns
+console.log(reshapedArray.toString());                
+</code></pre>
+            </div>
+
+            <button class="collapsible">Example 5: Random Number Generator</button>
+            <div class="content">
+                <pre><code>let randomArray = nj.random([3, 3], 'uniform');  // 3x3 array with random values between 0 and 1
+console.log(randomArray.toString());               
+</code></pre>
+            </div>
+
+            <button class="collapsible">Example 6: Solving Ax=b linear systems</button>
+            <div class="content">
+                <pre><code>let A = nj.array([[3, 2], [1, 2]]);
+let b = nj.array([8, 6]);
+let solution = nj.linalg.solve(A, b);
+console.log(solution.toString());
+</code></pre>
+            </div>
+
+            <button class="collapsible">Example 7: Element wise trigonometric functions</button>
+            <div class="content">
+                <pre><code>let angles = nj.array([0, Math.PI / 2, Math.PI, 3 * Math.PI / 2]);
+let sineValues = angles.sin();
+console.log(sineValues.toString());
+</code></pre>
+            </div>
+
+        </section>
+
+        <section class="section">
+            <h2>Screenshots</h2>
+            <p>Below are screenshots that illustrate the key functionalities:</p>
+            <img src="ss01.png" alt="Screenshot 1" class="screenshot">
+            <img src="ss02.png" alt="Screenshot 2" class="screenshot">
+            <img src="ss03.png" alt="Screenshot 3" class="screenshot">
+            <img src="ss04.png" alt="Screenshot 4" class="screenshot">
+        </section>
+
+        <section class="section">
+            <h2>Use Cases</h2>
+            <p>NumJS can be applied in various domains where numerical computation is needed:</p>
+            <ul>
+                <li><h3>Data Science:</h3> NumJS is highly useful for data analysis tasks, enabling efficient handling of large datasets, performing statistical analysis, data cleaning, and extracting valuable insights for decision-making.</li>
+                <li><h3>Machine Learning:</h3> In machine learning, NumJS facilitates the mathematical operations required for model building, training algorithms, optimization, and evaluation, especially in areas like linear regression and neural network calculations.</li>
+                <li><h3>Web Applications:</h3>For web applications, NumJS allows for the execution of client-side complex calculations in JavaScript, improving performance and interactivity in real-time data processing and visualization without server dependency.</li>
+                <li><h3>Scientific Computing:</h3>NumJS supports scientific research by offering powerful tools for numerical simulations, solving differential equations, linear algebra, and matrix operations, essential for advancing scientific discoveries and computational modeling.</li>
+            </ul>
+        </section>
+
+
+        <section class="section">
+            <h2>Conclusion</h2>
+            <p>NumJS is a robust and easy-to-use JavaScript library for numerical computing. Its versatility in handling arrays, matrices, and mathematical functions makes it an excellent tool for developers working on data-heavy applications. Whether you are building data analytics tools, machine learning models, or scientific simulations, NumJS provides the essential capabilities to carry out numerical computations effectively in JavaScript.</p>
+        </section>
+
+        <section class="section">
+            <h2>References and Further Reading</h2>
+            <p>For more in-depth tutorials and documentation on NumJS, check out the following resources:</p>
+            <ul>
+                <li><a href="https://github.com/nicolaspanel/numjs" target="_blank">Official NumJS GitHub Repository</a></li>
+                <li><a href="https://www.npmjs.com/package/numjs" target="_blank">NumJS on npm</a></li>
+                <li><a href="https://stackoverflow.com/questions/59300786/is-numjs-the-equivalent-of-numpy-in-javascript-what-are-its-dependencies-to-wor" target="_blank">Stack Overflow for NumJS library</a></li>
+            </ul>
+        </section>
+            
+    </main>
+
+    <footer>
+        <p>Made by J024 : Manognya, Divisht, Helly Bera .</p>
+    </footer>
+
+    <button class="scroll-to-top" id="scrollToTopBtn">&#8679;</button>
+
+    <script>
+        // Collapsible content functionality
+        document.querySelectorAll('.collapsible').forEach(function(button) {
+            button.addEventListener('click', function() {
+                this.classList.toggle('active');
+                var content = this.nextElementSibling;
+                if (content.style.display === 'block') {
+                    content.style.display = 'none';
+                } else {
+                    content.style.display = 'block';
+                }
+            });
+        });
+
+        // Scroll to top button functionality
+        var scrollToTopBtn = document.getElementById('scrollToTopBtn');
+        window.onscroll = function() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        };
+        scrollToTopBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
 </html>
